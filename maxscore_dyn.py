@@ -8,8 +8,9 @@ from sys import argv
 
 
 # DATA
+k = 10
 
-query_terms_ii = get_extended_index()
+query_terms_ii = get_large_index_test()
 num_docs = 10000000
 wand_data = create_wand_data(query_terms_ii)
 print wand_data
@@ -31,10 +32,10 @@ def print_postings_data(postings):
 
 def maxscore(postings):
     # init data
-    global docs_proccessed, sorts
+    global docs_proccessed, sorts, k
     non_essential_lists = 0
     cur_doc = 1
-    topk = TopK(2)
+    topk = TopK(k)
     sort_postings_by_upperbound(postings)
     sorts += 1
     maxscores = calc_maxscores(postings)
@@ -71,10 +72,10 @@ def maxscore(postings):
 
 def maxscore_dyn(postings):
     # init data
-    global docs_proccessed, sorts
+    global docs_proccessed, sorts, k
     non_essential_lists = 0
     cur_doc = 1
-    topk = TopK(2)
+    topk = TopK(k)
     sort_postings_by_upperbound(postings)
     sorts += 1
     maxscores = calc_maxscores(postings)
@@ -124,10 +125,10 @@ def maxscore_dyn(postings):
 
 def maxscore_smart_dyn(postings):
     # init data
-    global docs_proccessed, sorts
+    global docs_proccessed, sorts, k
     non_essential_lists = 0
     cur_doc = 1
-    topk = TopK(2)
+    topk = TopK(k)
     sort_postings_by_upperbound(postings)
     sorts += 1
     maxscores = calc_maxscores(postings)
